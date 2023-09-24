@@ -4,14 +4,14 @@ import iconPlay from '../assets/images/icon-play.svg';
 
 const Word = () => {
   const { wordData, theme } = useContext(MyContext);
-  let hasAudio;
-  const { word, phonetic, phonetics } = wordData[0];
-
-  if (phonetics.length !== 0) {
-    hasAudio = !!phonetics[0].audio;
-  }
-
+  let hasAudio = false;
+  let audioObject;
+  const { word, phonetics } = wordData[0];
   const audioRef = useRef(null);
+  if (phonetics.length !== 0) {
+    audioObject = phonetics.find((item) => item.audio !== '');
+    hasAudio = !!audioObject;
+  }
 
   console.log(wordData);
 
@@ -33,12 +33,12 @@ const Word = () => {
       <div className='d-flex align-items-center space-between'>
         <div className='d-flex flex-col'>
           <h1 className={`heading-l bold text-color-${theme}`}>{word}</h1>
-          <p className='heading-m bold text-color-purple'>{phonetic}</p>
+          <p className='heading-m bold text-color-purple'>{audioObject.text}</p>
         </div>
 
         {hasAudio && (
           <button className={`play-btn pointer`} onClick={playAudio}>
-            <audio ref={audioRef} src={phonetics[0].audio}></audio>
+            <audio ref={audioRef} src={audioObject.audio}></audio>
             <img src={iconPlay} alt='' className='play-icon' />
           </button>
         )}
