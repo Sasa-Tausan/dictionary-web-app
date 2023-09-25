@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Input from './components/Input';
 import { Loading } from './components/Loading';
 import Word from './components/Word';
+import NoWord from './components/NoWord';
 
 const App = () => {
   const [selectedFont, setSelectedFont] = useState('sans-serif');
@@ -24,10 +25,12 @@ const App = () => {
 
   const getWord = (e) => {
     setWord(e.target.value);
+    setWordData(null);
   };
 
   const fetchWord = () => {
     setIsLoading(true);
+    setError(null);
     axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       .then(function (response) {
@@ -37,7 +40,7 @@ const App = () => {
       })
       .catch(function () {
         setError('An error occurred while fetching the word.');
-
+        setError(true);
         setIsLoading(false);
       });
 
@@ -66,6 +69,7 @@ const App = () => {
           <Input />
           {isLoading && <Loading />}
           {wordData && <Word />}
+          {error && <NoWord />}
         </div>
       </div>
     </MyContext.Provider>

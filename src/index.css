@@ -21,10 +21,10 @@ h2,
 h3,
 h4,
 p,
-ul,
 figure,
 blockquote,
 dl,
+ul,
 dd {
   margin: 0;
   padding: 0;
@@ -130,6 +130,9 @@ select {
   display: block;
 }
 
+.text-align-center {
+  text-align: center;
+}
 /* * Color  */
 
 .bg-dark {
@@ -193,11 +196,21 @@ select {
   line-height: 24px;
 }
 
+.body-m {
+  font-size: 1.125rem;
+
+  line-height: 24px;
+}
+
 .heading-l {
   font-size: 2rem;
 }
 
 .heading-m {
+  font-size: 1.125rem;
+}
+
+.heading-s {
   font-size: 1.125rem;
 }
 
@@ -409,6 +422,42 @@ input:checked + .slider:before {
 
 .bg-hr-dark {
   border-color: #3a3a3a;
+}
+
+.definitions-list {
+  gap: 0.875rem;
+
+  padding-inline: 1.5rem;
+}
+
+.synonyms-list {
+  list-style-type: none;
+
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+}
+
+.definitions-item {
+  gap: 0.875rem;
+}
+
+.quote-text {
+  font-size: 0.938rem;
+
+  line-height: 24px;
+
+  margin-top: 0.875rem;
+}
+
+li::marker {
+  color: #a445ed;
+}
+
+/* ! No Word component */
+.no-word-section {
+  margin-top: 10rem;
+  gap: 3rem;
 }
 
 @media screen and (min-width: 768px) {
