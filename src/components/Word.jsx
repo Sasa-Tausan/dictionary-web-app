@@ -1,13 +1,14 @@
 import { useContext, useRef } from 'react';
 import { MyContext } from './MyContext';
 import iconPlay from '../assets/images/icon-play.svg';
+import iconNewWindow from '../assets/images/icon-new-window.svg';
 
 const Word = () => {
   const { wordData, theme } = useContext(MyContext);
-  console.log(wordData);
+
   let hasAudio = false;
   let audioObject;
-  const { word, phonetic, phonetics, meanings } = wordData[0];
+  const { word, phonetic, phonetics, meanings, sourceUrls } = wordData[0];
   const audioRef = useRef(null);
   if (phonetics.length !== 0) {
     audioObject = phonetics.find((item) => item.audio !== '');
@@ -28,9 +29,11 @@ const Word = () => {
 
   const playAudio = () => {
     const audioEl = audioRef.current;
+
     if (!audioEl) return;
 
     if (audioEl.paused || audioEl.ended) {
+      console.log('usao sam u if');
       // Play the audio
       audioEl.play();
     } else {
@@ -40,7 +43,7 @@ const Word = () => {
   };
 
   return (
-    <section className='word-section d-flex flex-col '>
+    <section className='word-section d-flex flex-col gap-40 '>
       <div className='d-flex align-items-center space-between'>
         <div className='d-flex flex-col'>
           <h1 className={`heading-l bold text-color-${theme}`}>{word}</h1>
@@ -66,7 +69,7 @@ const Word = () => {
         <hr className={`hr-line full-width bg-hr-${theme}`} />
       </div>
       <h3 className='heading-s text-color-grey'>Meaning</h3>
-      <ul className='definitions-list d-flex flex-col'>
+      <ul className='definitions-list d-flex flex-col gap-14'>
         {nounDefinitions.map((item, index) => {
           const { definition } = item;
           return (
@@ -94,6 +97,7 @@ const Word = () => {
         <h2 className={`heading-m bold text-color-${theme}`}>verb</h2>
         <hr className={`hr-line full-width bg-hr-${theme}`} />
       </div>
+      <h3 className='heading-s text-color-grey'>Meaning</h3>
       <ul className='definitions-list d-flex flex-col'>
         {verbDefinitions.map((item, index) => {
           const { definition, example } = item;
@@ -109,6 +113,21 @@ const Word = () => {
           );
         })}
       </ul>
+      <hr className={`hr-line full-width bg-hr-${theme}`} />
+      <div className='source-content d-flex align-items-center gap-24'>
+        <p className='body-text-14 text-color-grey'>Source</p>
+        {sourceUrls.length !== 0 && (
+          <a
+            href={`https://en.wiktionary.org/wiki/${word}`}
+            className={`wiki-link d-flex align-items-center body-text-14 text-color-${theme} `}
+            target='_blank'
+            rel='noreferrer'
+          >
+            {sourceUrls[0]}
+            <img src={iconNewWindow} alt='' />
+          </a>
+        )}
+      </div>
     </section>
   );
 };

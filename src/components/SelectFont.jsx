@@ -7,7 +7,7 @@ const SelectFont = () => {
     useContext(MyContext);
 
   return (
-    <div className='select-container relative d-flex  align-items-end '>
+    <div className='relative d-flex  align-items-end gap-16 '>
       <button
         className={`select-btn d-flex align-items-center space-between body-s text-color-${theme} bold pointer`}
         onClick={() => setIsOpen(!isOpen)}
@@ -17,7 +17,7 @@ const SelectFont = () => {
       </button>
       {isOpen && (
         <ul
-          className={`font-options full-width d-flex flex-col bg-font-options-${theme} bs-${theme}`}
+          className={`font-options full-width d-flex flex-col gap-16 bg-font-options-${theme} bs-${theme}`}
         >
           <li
             className={`font-item ff-sans-serif text-color-${theme} body-s bold pointer`}

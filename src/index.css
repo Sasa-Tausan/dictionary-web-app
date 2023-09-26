@@ -103,22 +103,33 @@ select {
 /* * Layout */
 
 .d-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .flex-col {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 
 .align-items-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .align-items-end {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
   align-items: end;
 }
 
 .space-between {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -190,6 +201,11 @@ select {
 }
 
 /* * Font size */
+
+.body-text-14 {
+  font-size: 0.875rem;
+}
+
 .body-s {
   font-size: 1rem;
 
@@ -220,10 +236,12 @@ select {
 
 /* * Box shadow */
 .bs-light {
+  -webkit-box-shadow: 0px 5px 30px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 5px 30px 0px rgba(0, 0, 0, 0.1);
 }
 
 .bs-dark {
+  -webkit-box-shadow: 0px 5px 30px 0px #a445ed;
   box-shadow: 0px 5px 30px 0px #a445ed;
 }
 
@@ -237,8 +255,6 @@ select {
 .page-container {
   max-width: 768px;
 
-  gap: 1.5rem;
-
   margin-inline: auto;
 
   padding-top: 1.5rem;
@@ -246,16 +262,15 @@ select {
   padding-bottom: 5.25rem;
 }
 
-/* ! Header component */
-.options-content {
+.gap-16 {
+  gap: 1rem;
+}
+
+.gap-14 {
   gap: 0.875rem;
 }
 
 /* ! Select Font component */
-
-.select-container {
-  column-gap: 1rem;
-}
 
 .font-options {
   position: absolute;
@@ -264,8 +279,6 @@ select {
 
   top: 35px;
   left: -100px;
-
-  gap: 1rem;
 
   padding: 1.5rem;
 
@@ -302,6 +315,7 @@ select {
 
 .vertical-line {
   border-left: 1px solid #e9e9e9;
+
   height: 32px;
 }
 
@@ -349,6 +363,7 @@ input:checked + .slider {
 }
 
 input:focus + .slider {
+  -webkit-box-shadow: 0 0 1px #a445ed;
   box-shadow: 0 0 1px #a445ed;
 }
 
@@ -379,6 +394,12 @@ input:checked + .slider:before {
   font-size: 1rem;
 }
 
+.search-input:focus {
+  border: 1px solid #a445ed;
+
+  caret-color: #a445ed;
+}
+
 .bg-input-dark {
   background-color: #1f1f1f;
 }
@@ -394,7 +415,8 @@ input:checked + .slider:before {
 }
 
 /* ! Word component */
-.word-section {
+
+.gap-40 {
   gap: 2.5rem;
 }
 
@@ -425,33 +447,39 @@ input:checked + .slider:before {
 }
 
 .definitions-list {
-  gap: 0.875rem;
-
   padding-inline: 1.5rem;
+
+  gap: 0.875rem;
 }
 
 .synonyms-list {
   list-style-type: none;
+
+  -ms-flex-wrap: wrap;
 
   flex-wrap: wrap;
 
   gap: 0.5rem;
 }
 
-.definitions-item {
-  gap: 0.875rem;
-}
-
 .quote-text {
   font-size: 0.938rem;
 
   line-height: 24px;
-
-  margin-top: 0.875rem;
 }
 
 li::marker {
   color: #a445ed;
+}
+
+.wiki-link {
+  text-decoration: underline;
+
+  -ms-flex-wrap: wrap;
+
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
 }
 
 /* ! No Word component */

@@ -5,9 +5,9 @@ import ToggleTheme from './ToggleTheme';
 
 const Header = () => {
   return (
-    <header className='full-width d-flex align-items-center space-between'>
+    <header className='full-width d-flex align-items-center space-between '>
       <img src={logo} alt='company logo' />
-      <div className='options-content d-flex align-items-center'>
+      <div className=' d-flex align-items-center gap-14'>
         <SelectFont />
         <div className='vertical-line'></div>
         <ToggleTheme />

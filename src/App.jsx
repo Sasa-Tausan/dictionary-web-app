@@ -28,9 +28,16 @@ const App = () => {
     setWordData(null);
   };
 
+  const fetchDataEnter = (event) => {
+    if (event.key === 'Enter') {
+      fetchWord();
+    }
+  };
+
   const fetchWord = () => {
     setIsLoading(true);
     setError(null);
+
     axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       .then(function (response) {
@@ -60,11 +67,12 @@ const App = () => {
         word,
         getWord,
         fetchWord,
+        fetchDataEnter,
         wordData,
       }}
     >
       <div className={`App ff-${selectedFont} bg-${theme}`}>
-        <div className='page-container full-width d-flex flex-col'>
+        <div className='page-container full-width d-flex flex-col gap-24'>
           <Header />
           <Input />
           {isLoading && <Loading />}
